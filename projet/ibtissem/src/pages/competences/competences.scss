@@ -1,0 +1,84 @@
+page-competences {
+
+.k{
+    position: relative;
+//        background-image: url(../assets/img/fleurs.png); 
+   
+    display: flex;
+    width: 90%;
+    margin: auto;
+    background-color: rgba(255,255,255,0.5);
+    }
+    
+    h2{
+    padding:20px;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    }
+    
+    #contenaire
+    {
+        position: absolute;
+
+    }
+  
+    
+  
+    #figure
+    {
+    position: absolute; 
+    right: 0;
+    width: 80%;
+    margin-top: 450px;
+//    transform: rotate(-90deg);
+   
+    }   
+    #figure img{
+        opacity: 0.8;
+    }
+ 
+    #figure2
+    {
+    position: absolute; 
+    width: 70%;
+   
+   
+    
+    }
+    
+    #competence{
+ 
+        
+    }
+    
+    ul{
+        margin: 0;
+    }
+    
+    
+    .rose{
+    border: 1px solid #ce1d5a;    
+
+     padding: 8px;
+    text-align: center;
+    background-color:#ce1d5a; 
+    color: white;
+    
+    } 
+    
+    #formation{
+    margin-top: 30px;
+
+    }
+    
+    #formation p, #competence p{
+       background-color: rgba(255,255,255,0.4);
+        padding: 10px;
+        margin: 0;
+    }
+  
+    .titre{
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
