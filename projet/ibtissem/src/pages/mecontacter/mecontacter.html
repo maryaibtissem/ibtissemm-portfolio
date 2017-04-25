@@ -1,0 +1,60 @@
+<!--
+  Generated template for the Maformation page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contact</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+   
+   <div id="body">
+  
+    <div id="figure"><img src="img/fleurs.png"> </div>
+    <div id="figure2"><img src="img/fleur_noir.png"> </div>
+     <div id="titre">Vous souhaitez me contacter, merci de remplir le formulaire.</div>
+    
+     <form #form="ngForm" (ngSubmit)="logForm(form)" >
+        
+        <input type="email" required [(ngModel)]="todo.mail" name="mail"  class="champ" placeholder="Votre adresse e-mail">
+        
+        <input type ="text" required [(ngModel)]="todo.sujet" name="sujet"  class="champ" placeholder="Sujet">
+        
+        <textarea required [(ngModel)]="todo.message" name="message" rows="7" placeholder="Votre message"></textarea><br>
+        
+        <input class="submit" type="submit" name="contact" value="Envoyer">
+       </form>
+    </div>
+    <div id="resultat">{{text}}</div>
+   
+<!--
+   <form #form="ngForm" (ngSubmit)="logForm(form)" >
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked>Votre adresse mail</ion-label>
+        <ion-input [(ngModel)]="todo.mail" name="mail" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Sujet</ion-label>
+        <ion-input [(ngModel)]="todo.sujet" name="sujet" type="text"></ion-input>
+      </ion-item>
+  
+       <ion-item>
+        <ion-label stacked>Sujet</ion-label>
+        <ion-input [(ngModel)]="todo.message" name="message" type="text"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    </form>
+-->
+
+</ion-content>

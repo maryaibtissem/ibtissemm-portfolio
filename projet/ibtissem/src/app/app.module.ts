@@ -6,7 +6,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {CompetencesPage} from '../pages/competences/competences';
-import { MaformationPage } from '../pages/maformation/maformation';
+import { MecontacterPage } from '../pages/mecontacter/mecontacter';
 import { MesprojetsPage } from '../pages/mesprojets/mesprojets';
 import { EbimagePage } from '../pages/ebimage/ebimage';
 
@@ -18,7 +18,7 @@ import { EbimagePage } from '../pages/ebimage/ebimage';
     HomePage,
     TabsPage,
     CompetencesPage,
-   MaformationPage,
+   MecontacterPage,
    MesprojetsPage,
    EbimagePage
   ],
@@ -33,7 +33,7 @@ import { EbimagePage } from '../pages/ebimage/ebimage';
     HomePage,
     TabsPage,
     CompetencesPage,
-    MaformationPage,
+    MecontacterPage,
     MesprojetsPage,
     EbimagePage
     

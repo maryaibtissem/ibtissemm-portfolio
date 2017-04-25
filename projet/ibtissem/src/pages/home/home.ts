@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { CompetencesPage } from '../competences/competences';
-import { MaformationPage } from '../maformation/maformation';
+import { MecontacterPage } from '../mecontacter/mecontacter';
 import { MesprojetsPage } from '../mesprojets/mesprojets';
 
 
@@ -19,7 +19,7 @@ import * as $ from 'jquery';
 export class HomePage {
 
 tabBarElement:any;
-formation=MaformationPage;
+contact=MecontacterPage;
 competences= CompetencesPage;
 projets = MesprojetsPage;
 

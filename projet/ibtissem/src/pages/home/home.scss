@@ -73,8 +73,9 @@ page-home {
         align-items: center;
         //        pour centrer l'ecriture part apport a l'image
     }
-    //    color-nav
-    //    {
-    //        
-    //    }
+
+     .tabbar.show-tabbar {
+        display: none!important;
+       
+    }
 }
