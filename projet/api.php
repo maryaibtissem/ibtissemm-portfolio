@@ -7,7 +7,7 @@ header('Access-Control-Allow-Headers: content-type, x-xsrf-token');
 header('Access-Control-Allow-Methods: OPTIONS,DELETE,POST,GET,PUT');
 
 
-
+include('EmailAddressValidator.php');
 $serveur = "localhost";
 $user = "menai";
 $password ="wYmg3DMdXuhi9Lms";
@@ -35,7 +35,11 @@ if($method == 'GET'){
     
     if(isset($_GET['contact'])){
         
+         $validator = new EmailAddressValidator;
+        
         if( !empty ($_GET['mail']) && !empty($_GET['sujet']) && !empty($_GET['message'])){
+            
+            if ($validator->check_email_address($_GET['mail']) ){
 
             $expediteur= $_GET['mail'];
             $message= $_GET['message'];
@@ -56,8 +60,13 @@ if($method == 'GET'){
                     echo (json_encode('votre message n\'a pas pu être envoyé.'));
                 }
         } else{
+            echo (json_encode('Email non valide!'));    
+                
+            }
+        }else{
             echo (json_encode('Il faut remplir tout les champs'));
-        }  
+            }
+         
         
         
     } else {
