@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar color="test">
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div id="contenaire">
+        <div id="partie1">
+            <!--        <img src="../assets/img/873new.jpg">-->
+            <div id="nom">
+                <p class="phrase1">IBTISSEM MENAI</p>
+                <p id="phrase2"> Développeuse Web</p>
+            </div>
+
+        </div>
+
+        <div id="groupe">
+
+        <div id="maman">
+            <div class="icones">
+                <a [navPush]="competences" class="cartable"> <img src="assets/img/chapeau.png"></a>
+                <label>FORMATION</label>
+            </div>
+            
+            <div class="icones">
+                <a [navPush]="projets" class="projet"> <img src="assets/img/Sans titre - 1.png"></a>
+                <label>PROJETS</label>
+
+         
+            </div>
+
+        </div>
+
+        <div class="icones">
+               
+        <a class="projet" [navPush]="contact"> <img src="assets/img/message-closed-envelope.png"> </a>
+        <label id ="contact">CONTACT</label>
+
+
+        </div>
+    	</div>
+
+
+    </div>
+
+
+</ion-content>

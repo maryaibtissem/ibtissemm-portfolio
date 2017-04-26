@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Mes projets</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="card-background-page">
+
+ 
+    <ion-card *ngFor="let post of posts" (click)="projetChoisi($event, post)">
+    
+ 
+        <img src ="http://menai.chalon.codeur.online/api/img/{{post.img_nom}}" alt="{{post.nom}}">
+        <div id = "groupe">
+        <div class="card-title titre" [innerHTML]="post.titre"></div>
+        <div class="card-subtitle" [innerHTML]="post.sous_titre"></div>
+    	</div>
+<!--        <p [innerHTML]="post.url"></p>-->
+    
+   
+
+    </ion-card>
+
+
+</ion-content>

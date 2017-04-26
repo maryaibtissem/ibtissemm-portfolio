@@ -55,51 +55,92 @@ if($method == 'GET'){
             }   else{
                     echo (json_encode('votre message n\'a pas pu être envoyé.'));
                 }
-        }    
+        } else{
+            echo (json_encode('Il faut remplir tout les champs'));
+        }  
         
         
-    } else{
+    } else {
+        
+        if(isset($_GET['modification'])){
+        
+            $name = $_GET['titre'];
+            $req= $connexion->prepare("SELECT * FROM api_projets WHERE titre=?");
+            $req->execute(array($name));
+            $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+            echo (json_encode($resultat));
+
+           
+            
+        }   else{
    
-    $req= $connexion->prepare("SELECT * FROM api_projets ");
-    $req->execute();
+            $req= $connexion->prepare("SELECT * FROM api_projets ");
+            $req->execute();
 
-    $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
-    echo (json_encode($resultat));
-    }   
+            $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+            echo (json_encode($resultat));
+            }   
 
+    
+    
+    }
+    
+    
+    
+  
 
 }else if ($method == 'POST'){
-    $input = file_get_contents('php://input');
-    $input = json_decode($input);
+    
+    if(isset($_POST['sous_titre_modi'])){
+        
+        $titre =$_POST['name'];
+        $sous_titre =$_POST['sous_titre_modi'];
+        $desc =$_POST['desc_modi'];
+        
+        
+        $req = $connexion->prepare('UPDATE api_projets
+            SET  titre = ?,
+            sous_titre= ?,
+            description = ?
+            
+            WHERE titre=?');
+            $req->execute(array($titre,$sous_titre,$desc,$titre));
+        
+    }
+    else{
+        $input = file_get_contents('php://input');
+        $input = json_decode($input);
 
 
-            $img_nom = $_FILES["img"]["name"];
-            $img_chemin  = $_FILES['img']['tmp_name'];
+        $img_nom = $_FILES["img"]["name"];
+        $img_chemin  = $_FILES['img']['tmp_name'];
             
             $chemin = realpath("api.php");
 //            $chemin = str_replace("api.php","image\\",$chemin);
             $chemin = str_replace("api.php","img/",$chemin);
-            echo  $chemin.$img_nom;
+//            echo  $chemin.$img_nom;
          
             $img_taille = $_FILES['img']['size'];
           
    
             $check = getimagesize($img_chemin); 
-            $taille_max = 250000;
+            $taille_max = 2500000;
  
             if($check == true){
                 
                 if ($img_taille < $taille_max){
-                var_dump (move_uploaded_file ($img_chemin, $chemin.$img_nom));
+                        var_dump (move_uploaded_file ($img_chemin, $chemin.$img_nom));
                } 
   
             }
         
             $name = $_POST['name'];
             $desc = $_POST['desc'];      
-            $req = $connexion->prepare('INSERT INTO api_projets (nom, description,img_nom,img_chemin) VALUES(?,?,?,?)');
-            $req->execute(array($name,$desc,$img_nom , $chemin.$img_nom ));       
+            $sous = $_POST['sous'];      
+            $req = $connexion->prepare('INSERT INTO api_projets (img_nom2,titre, description,img_nom,sous_titre) VALUES(?,?,?,?,?)');
+            $req->execute(array( $img_nom,$name,$desc,'card-saopaolo.png' ,$sous ));       
     
+    }
 }
 
 else if($method == 'DELETE'){
@@ -110,7 +151,7 @@ else if($method == 'DELETE'){
     
             $name = $input->infos->name;
 //    echo $name;  
-            $req= $connexion->query("DELETE FROM api_projets WHERE nom= '$name'  ");       
+            $req= $connexion->query("DELETE FROM api_projets WHERE titre= '$name'  ");       
 }
 
 
