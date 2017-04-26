@@ -146,8 +146,8 @@ if($method == 'GET'){
             $name = $_POST['name'];
             $desc = $_POST['desc'];      
             $sous = $_POST['sous'];      
-            $req = $connexion->prepare('INSERT INTO api_projets (img_nom2,titre, description,img_nom,sous_titre) VALUES(?,?,?,?,?)');
-            $req->execute(array( $img_nom,$name,$desc,'card-saopaolo.png' ,$sous ));       
+            $req = $connexion->prepare('INSERT INTO api_projets (img_nom2,titre, description,img_nom,sous_titre,chemin_img) VALUES(?,?,?,?,?,?)');
+            $req->execute(array( $img_nom,$name,$desc,'card-saopaolo.png' ,$sous, $chemin.$img_nom));       
     
     }
 }
@@ -156,11 +156,18 @@ else if($method == 'DELETE'){
     
     $input = file_get_contents('php://input');
     $input = json_decode($input);
-
+    $name = $input->infos->name;
     
-            $name = $input->infos->name;
-//    echo $name;  
-            $req= $connexion->query("DELETE FROM api_projets WHERE titre= '$name'  ");       
+    $req2= $connexion->query("SELECT chemin_img FROM api_projets WHERE titre= '$name'");
+    
+    $resultat = $req2->fetchAll(PDO::FETCH_ASSOC);
+    
+    unlink($resultat[0]['chemin_img']) ;
+//    echo $resultat[0]['chemin_img'] ;
+    
+            $req= $connexion->query("DELETE FROM api_projets WHERE titre= '$name'  ");   
+    
+    echo (json_encode('suppression avec succès.'));
 }
 
 

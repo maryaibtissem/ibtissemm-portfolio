@@ -55,6 +55,7 @@
                 <button id="supp" class="bouton_ajout" name="envoyer">Supprimer</button>
             </form>
             <div id="resultat"></div>
+           
         </div>
 
 
@@ -163,6 +164,9 @@
                     contentType: 'application/json',
                     data: JSON.stringify(infos),
                     success: function (msg) {
+                    var myObj = JSON.parse(msg);
+                        //console.log(msg);
+                   $('#resultat').append(myObj); 
 
                     }
                 });
